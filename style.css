@@ -58,17 +58,6 @@ body {
     width: 110px;
 }
 
-.vidclass {
-    border-radius: 30px;
-    border: 5px solid rgb(255, 255, 255);
-    transition: background-color 0.5s, transform 0.5s;
-}
-
-.vidclass:hover {
-    transform: translate(0px, 0px) scale(0.95);
-    animation: borcolor 1000ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
 .download-btn:hover {
     transform: translate(0px, 0px) scale(0.95);
     animation: color 1000ms ease-in-out infinite;
@@ -81,20 +70,6 @@ body {
 .thanksdiv1:hover {
     transform: translate(0px, 0px) scale(0.95);
     animation: textcolor 1000ms ease-in-out infinite;
-}
-
-.volume-container {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 210px;
-}
-
-#volumeSlider {
-  width: 150px;
-  accent-color: #00bfff; /* werkt in moderne browsers */
-  margin-left: 250%;
 }
 
 .btn {
@@ -171,3 +146,4 @@ body {
     border-color: red;
   }
 }
+
