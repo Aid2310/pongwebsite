@@ -17,8 +17,8 @@ function closePopup() {
 
 document.getElementById("downloadBtn").addEventListener("click", function () {
   const link = document.createElement("a");
-  link.href = "pong.zip";  // of "downloads/pong.exe" als hij in een submap staat
-  link.download = "pong.zip";
+  link.href = "PongV1.11.zip";  // of "downloads/pong.exe" als hij in een submap staat
+  link.download = "PongV1.11.zip";
   link.click();
 });
 function thanks() {
@@ -37,4 +37,5 @@ function openFullscreen() {
   }
 
 }
+
 
