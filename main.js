@@ -25,14 +25,7 @@ function thanks() {
   document.getElementById("thanksdiv").textContent = "Thanks for downloading my Game🤗!";
 }
 
-const video = document.getElementById('vidid');
-const volumeSlider = document.getElementById('volumeSlider');
-
-volumeSlider.addEventListener('input', () => {
-  video.volume = volumeSlider.value;
-});
-
-var elem = document.getElementById("Fullscreendiv");
+var elem = document.getElementById("htmls");
 
 function openFullscreen() {
   if (elem.requestFullscreen) {
@@ -44,3 +37,4 @@ function openFullscreen() {
   }
 
 }
+
