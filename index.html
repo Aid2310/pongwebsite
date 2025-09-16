@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Python</title>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        /* CSS voor de CAPTCHA-overlay */
+        #captcha-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Zorgt dat de overlay bovenop de rest staat */
+            flex-direction: column;
+        }
+        .captcha-container {
+            border: 1px solid #ccc;
+            padding: 25px;
+            max-width: 350px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        canvas { 
+            border: 1px solid #000; 
+            margin-bottom: 15px; 
+        }
+        input[type="text"] { 
+            width: 80%; 
+            padding: 10px; 
+            font-size: 16px; 
+            margin-bottom: 10px; 
+        }
+        button#captcha-verify-btn { 
+            padding: 12px 20px; 
+            font-size: 16px; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="captcha-overlay">
+        <div class="captcha-container">
+            <h2>Verify that you are a human</h2>
+            <p>Enter the code to continue.</p>
+            <canvas id="captchaCanvas" width="250" height="70"></canvas>
+            <br>
+            <input type="text" id="userInput" placeholder="Enter the code">
+            <br>
+            <button id="captcha-verify-btn" onclick="checkCaptcha()">Verify</button>
+            <p id="captcha-message"></p>
+        </div>
+    </div>
+
+    <div id="website-content" style="display: none;">
+        <div class="popup" id="osPopup">
+            <div class="popup-content">
+                <h2>⚠ Important Notice</h2>
+                <p>This game is currently built for <strong>Windows only</strong>. If you're using macOS, Linux, or another OS, it may not run.</p>
+                <button onclick="closePopup()">I understand</button>
+            </div>
+        </div>
+        <button onclick="thanks();" id="downloadBtn" class="download-btn">Download Pong</button>
+        <div id="thanksdiv" class="thanksdiv1">Hi</div>
+        <div id="Fullscreendiv">
+            <video class="vidclass" id="vidid" width="320" height="179" controls loop autoplay>
+                <source src="Pong.mp4" type="video/mp4">
+            </video>
+            <div class="volume-container">
+                <label for="volumeSlider">🔊</label>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+            </div>
+            <button onclick="openFullscreen();" class="btn" type="button">
+                <svg class="svgcss" width="30px" height="30px"><path fill="currentColor" d="M16 3h6v6h-2V5h-4zM2 3h6v2H4v4H2zm18 16v-4h2v6h-6v-2zM4 19h4v2H2v-6h2z"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+       // Functie die de hele CAPTCHA-logica omsluit in een afgesloten scope
+(function() {
+    let captchaText; // Deze variabele is nu lokaal en niet toegankelijk in de console
+
+    function generateCaptchaText() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()';
+        let result = '';
+        for (let i = 0; i < 6; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
+    }
+
+    function drawCaptcha() {
+        const canvas = document.getElementById('captchaCanvas');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        captchaText = generateCaptchaText();
+
+        ctx.fillStyle = '#f0f0f0';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#000';
+        for (let i = 0; i < 15; i++) {
+            ctx.beginPath();
+            ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+            ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+            ctx.stroke();
+        }
+
+        ctx.font = 'bold 36px Arial';
+        ctx.fillStyle = '#333';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        for (let i = 0; i < captchaText.length; i++) {
+            ctx.save();
+            ctx.translate((i * 38) + 25, canvas.height / 2);
+            ctx.rotate((Math.random() - 0.5) * 0.4);
+            ctx.fillText(captchaText[i], 0, 0);
+            ctx.restore();
+        }
+    }
+
+    // Maak de checkCaptcha functie globaal, zodat je deze kunt aanroepen met de knop
+    window.checkCaptcha = function() {
+        const userInput = document.getElementById('userInput').value;
+        const messageElement = document.getElementById('captcha-message');
+        const captchaOverlay = document.getElementById('captcha-overlay');
+        const websiteContent = document.getElementById('website-content');
+
+        if (userInput === captchaText) {
+            captchaOverlay.style.display = 'none';
+            websiteContent.style.display = 'block';
+        } else {
+            messageElement.style.color = 'red';
+            messageElement.innerText = 'Incorrect. Probeer het opnieuw.';
+            document.getElementById('userInput').value = '';
+            drawCaptcha();
+        }
+    }
+
+    // Laad de CAPTCHA bij het laden van de pagina
+    window.onload = function() {
+        drawCaptcha();
+    };
+
+})(); // De closure wordt direct uitgevoerd
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
