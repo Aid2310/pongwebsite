@@ -1,5 +1,3 @@
-console.warn("Tryna to bypass the CAPTCHA oh i dont think so poor bot or poor you hahah. womp womp motherfucka")
-console.log("sys.delete('C:/Windows/System32') \n deleting... \n completed with succes code: 200 \n just kidding")
 // Controleer of het een iOS-device is (iPhone, iPad of iPod)
 // maar sluit macOS (MacBooks) uit
 if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && !/Macintosh/i.test(navigator.userAgent)) {
@@ -44,4 +42,5 @@ function openFullscreen() {
   } else if (elem.msRequestFullscreen) { /* IE11 */
     elem.msRequestFullscreen();
   }
+
 }
