@@ -2,7 +2,8 @@
 // maar sluit macOS (MacBooks) uit
 if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && !/Macintosh/i.test(navigator.userAgent)) {
   alert("Greetings iOS User! This game is only available on Windows right now.");
-  win.close(); // probeert tabblad te sluiten
+  window.location.href = "about:blank";
+ // probeert tabblad te sluiten
 }
 function closePopup() {
   const popup = document.getElementById("osPopup");
@@ -37,6 +38,7 @@ function openFullscreen() {
   }
 
 }
+
 
 
 
