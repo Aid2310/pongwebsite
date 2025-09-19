@@ -3,6 +3,7 @@
 if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && !/Macintosh/i.test(navigator.userAgent)) {
   alert("Greetings iOS User! This game is only available on Windows right now.");
   window.location.href = "about:blank";
+  window.close();
  // probeert tabblad te sluiten
 }
 function closePopup() {
@@ -38,6 +39,7 @@ function openFullscreen() {
   }
 
 }
+
 
 
 
