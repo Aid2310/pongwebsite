@@ -6,13 +6,6 @@ body {
   padding: 2rem;
 }
 
- body {
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      margin: 0;
-      background: #f4f4f4;
-    }
-
     #contextMenu {
       position: absolute;
       display: none;
@@ -183,6 +176,7 @@ body {
     border-color: red;
   }
 }
+
 
 
 
