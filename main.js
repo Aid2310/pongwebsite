@@ -40,7 +40,17 @@ function openFullscreen() {
 
 }
 
+const contextMenu = document.getElementById("contextMenu");
 
+    // Rechtermuisklik event
+    document.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      contextMenu.style.top = `${e.clientY}px`;
+      contextMenu.style.left = `${e.clientX}px`;
+      contextMenu.style.display = "block";
+    });
 
-
-
+    // Klik ergens anders sluit menu
+    document.addEventListener("click", () => {
+      contextMenu.style.display = "none";
+    });
