@@ -10,9 +10,6 @@ body {
       font-family: Arial, sans-serif;
       height: 100vh;
       margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background: #f4f4f4;
     }
 
@@ -186,6 +183,7 @@ body {
     border-color: red;
   }
 }
+
 
 
 
