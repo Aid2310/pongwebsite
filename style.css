@@ -6,6 +6,46 @@ body {
   padding: 2rem;
 }
 
+ body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f4f4f4;
+    }
+
+    #contextMenu {
+      position: absolute;
+      display: none;
+      background: white;
+      border: 1px solid gray; /* grijze border */
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      min-width: 160px;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    #contextMenu ul {
+      list-style: none;
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    #contextMenu li {
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #contextMenu li:hover,
+    #contextMenu li.active {
+      background: #0078d7;
+      color: white;
+    }
+
 .popup {
   display: flex;
   position: fixed;
@@ -146,5 +186,6 @@ body {
     border-color: red;
   }
 }
+
 
 
